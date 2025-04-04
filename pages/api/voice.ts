@@ -8,12 +8,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
   const twiml = `
     <Response>
-      <Connect>
-        <Conversation startConversationOnParticipantConnect="true">
-          <Participant identity="placeholder-user" />
-          <ConversationRelay url="wss://relay-server-j0er.onrender.com" />
-        </Conversation>
-      </Connect>
+      <Say>Hi! You're now speaking with the Twilio AI agent.</Say>
+      <Start>
+        <Stream url="wss://relay-server-j0er.onrender.com" />
+      </Start>
+      <Pause length="60" />
     </Response>
   `;
 
