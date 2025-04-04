@@ -6,15 +6,15 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     return;
   }
 
- const twiml = `
- <Response>
-  <Connect>
-    <Conversation startConversationOnParticipantConnect="true">
-      <ConversationRelay url="wss://relay-server-j0er.onrender.com" />
-    </Conversation>
-  </Connect>
-</Response>
-`;
+  const twiml = `
+    <Response>
+      <Connect>
+        <Conversation startConversationOnParticipantConnect="true">
+          <ConversationRelay url="wss://relay-server-j0er.onrender.com" />
+        </Conversation>
+      </Connect>
+    </Response>
+  `;
 
   res.setHeader('Content-Type', 'text/xml');
   res.status(200).send(twiml.trim());
