@@ -12,7 +12,7 @@ const twiml = `
     <Start>
       <Stream url="wss://relay-server-j0er.onrender.com" />
     </Start>
-    <Pause length="15" />
+    <Pause length="20" />
   </Response>
 `;
 
