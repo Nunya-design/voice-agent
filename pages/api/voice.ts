@@ -7,8 +7,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         <ConversationRelay 
           url="wss://relay-server-j0er.onrender.com"
           ttsProvider="ElevenLabs"
-          voice="Rachel"
-          welcomeGreeting="Hi there! I'm Twilio's AI agent. How can I help today?" />
+          voice="21m00Tcm4TlvDq8ikWAM"
+          welcomeGreeting="Hi! You're now speaking with Twilio's AI agent." />
       </Connect>
     </Response>
   `;
