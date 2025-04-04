@@ -1,22 +1,19 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    res.status(405).send('Method Not Allowed');
-    return;
-  }
-  
-const twiml = `
-  <Response>
-    <Say voice="Polly.Joanna">Hi! You're now speaking with the Twilio AI agent.</Say>
-    <Start>
-      <Stream url="wss://relay-server-j0er.onrender.com" />
-    </Start>
-    <Pause length="20" />
-  </Response>
-`;
-
+  const twiml = `
+    <Response>
+      <Connect>
+        <ConversationRelay 
+          url="wss://relay-server-j0er.onrender.com"
+          ttsProvider="ElevenLabs"
+          voice="Rachel"
+          welcomeGreeting="Hi there! I'm Twilio's AI agent. How can I help today?" />
+      </Connect>
+    </Response>
+  `;
 
   res.setHeader('Content-Type', 'text/xml');
   res.status(200).send(twiml.trim());
 }
+
