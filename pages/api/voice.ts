@@ -5,7 +5,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const voiceResponse = new twilio.twiml.VoiceResponse();
 
   const gather = voiceResponse.gather({
-    input: 'speech',
+    input: ['speech'], // ← fix is right here
     action: '/api/transcription',
     method: 'POST',
     speechTimeout: 'auto',
