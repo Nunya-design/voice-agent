@@ -11,7 +11,9 @@
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "twilio": "^4.0.0"
+    "twilio": "^4.0.0",
+    "openai": "^4.0.0"
+
   },
   "devDependencies": {
     "typescript": "^4.0.0",
