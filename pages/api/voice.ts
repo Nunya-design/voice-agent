@@ -5,17 +5,17 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     res.status(405).send('Method Not Allowed');
     return;
   }
-
+  
 const twiml = `
   <Response>
-    <Say voice="Polly.Joanna">Hi! You're now speaking with the Twilio AI SDR.</Say>
+    <Say voice="Polly.Joanna">Hi! You're now speaking with the Twilio AI agent.</Say>
     <Start>
       <Stream url="wss://relay-server-j0er.onrender.com" />
     </Start>
-    <Pause length="5"/>
-    <Redirect>https://voice-agent-inky.vercel.app/api/respond</Redirect>
+    <Pause length="15" />
   </Response>
 `;
+
 
   res.setHeader('Content-Type', 'text/xml');
   res.status(200).send(twiml.trim());
