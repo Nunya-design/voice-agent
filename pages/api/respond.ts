@@ -1,11 +1,14 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+let lastResponse = 'Sorry, something went wrong.';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { message } = req.body;
+export default function handler(req, res) {
+  if (req.method === 'POST') {
+    lastResponse = req.body.message || lastResponse;
+    return res.status(200).end();
+  }
 
   const twiml = `
     <Response>
-      <Say>${message}</Say>
+      <Say>${lastResponse}</Say>
       <Hangup/>
     </Response>
   `;
