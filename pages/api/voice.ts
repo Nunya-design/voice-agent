@@ -7,13 +7,13 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
  const twiml = `
-  <Response>
-    <Connect>
-      <Conversation>
-        <ConversationRelay url="wss://relay-server-j0er.onrender.com" />
-      </Conversation>
-    </Connect>
-  </Response>
+ <Response>
+  <Connect>
+    <Conversation startConversationOnParticipantConnect="true">
+      <ConversationRelay url="wss://relay-server-j0er.onrender.com" />
+    </Conversation>
+  </Connect>
+</Response>
 `;
 
   res.setHeader('Content-Type', 'text/xml');
