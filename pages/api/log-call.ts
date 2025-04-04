@@ -4,6 +4,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).send('Only POST allowed');
 
   const {
+    recordId,
     callSid,
     from,
     name,
@@ -15,28 +16,24 @@ export default async function handler(req, res) {
 
   try {
     const airtableRes = await fetch(
-      `https://api.airtable.com/v0/YOUR_BASE_ID/Leads`,
+      `https://api.airtable.com/v0/YOUR_BASE_ID/Leads/${recordId}`,
       {
-        method: 'POST',
+        method: 'PATCH',
         headers: {
           Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          records: [
-            {
-              fields: {
-                Name: name || '',
-                'Phone Number': from || '',
-                CallSid: callSid,
-                Timestamp: timestamp,
-                Transcript: transcript || '',
-                'Agent Notes': notes || '',
-                Status: 'New',
-                'Handoff Reason': handoffReason || '',
-              },
-            },
-          ],
+          fields: {
+            Name: name || '',
+            'Phone Number': from || '',
+            CallSid: callSid,
+            Timestamp: timestamp,
+            Transcript: transcript || '',
+            'Agent Notes': notes || '',
+            Status: 'Attempted',
+            'Handoff Reason': handoffReason || '',
+          },
         }),
       }
     );
@@ -53,3 +50,4 @@ export default async function handler(req, res) {
     res.status(500).json({ error: err.message });
   }
 }
+
