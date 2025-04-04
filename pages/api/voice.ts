@@ -6,15 +6,15 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     return;
   }
 
-  const twiml = `
-    <Response>
-      <Say>Hi! You're now speaking with the Twilio AI agent.</Say>
-      <Start>
-        <Stream url="wss://relay-server-j0er.onrender.com" />
-      </Start>
-      <Pause length="60" />
-    </Response>
-  `;
+const twiml = `
+  <Response>
+    <Say>Hi! You're now speaking with the Twilio AI agent.</Say>
+    <Start>
+      <Stream url="wss://relay-server-j0er.onrender.com" />
+    </Start>
+    <Redirect>https://voice-agent-inky.vercel.app/api/respond</Redirect>
+  </Response>
+`;
 
   res.setHeader('Content-Type', 'text/xml');
   res.status(200).send(twiml.trim());
