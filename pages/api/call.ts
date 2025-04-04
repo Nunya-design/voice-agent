@@ -12,7 +12,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     const call = await twilioClient.calls.create({
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/voice`,
+     url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/voice`,
       to,
       from: process.env.TWILIO_PHONE_NUMBER!,
     });
