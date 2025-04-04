@@ -32,4 +32,3 @@ export default function Home() {
     </div>
   );
 }
-console.log(`🟢 WebSocket server running on port ${process.env.PORT || 8080}`);
