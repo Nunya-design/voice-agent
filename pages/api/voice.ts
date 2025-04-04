@@ -9,7 +9,7 @@ response.connect().conversation({
   serviceSid: process.env.TWILIO_CONVERSATION_SERVICE_SID,
   mediaStreams: [
     {
-      url: 'wss://YOUR-RENDER-URL.onrender.com',
+      url: 'https://relay-server-j0er.onrender.com/',
       track: 'inbound_audio',
     },
   ],
