@@ -10,6 +10,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     <Response>
       <Connect>
         <Conversation startConversationOnParticipantConnect="true">
+          <Participant identity="placeholder-user" />
           <ConversationRelay url="wss://relay-server-j0er.onrender.com" />
         </Conversation>
       </Connect>
