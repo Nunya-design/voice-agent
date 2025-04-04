@@ -1,3 +1,4 @@
+export{};
 if (req.method === 'GET') {
   const twiml = `
     <Response>
