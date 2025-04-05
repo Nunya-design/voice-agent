@@ -8,7 +8,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
           url="wss://relay-server-j0er.onrender.com"
           ttsProvider="ElevenLabs"
           voice="UgBBYS2sOqTuMpoF3BR0"
-          welcomeGreeting="Hi! You're now speaking with Walters, are you interested in learning more about Twilio?." />
+          welcomeGreeting="Hi! You're now speaking with Walters assistant, are you interested in learning more about Twilio?." />
       </Connect>
     </Response>
   `;
