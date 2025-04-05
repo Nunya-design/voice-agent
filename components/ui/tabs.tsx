@@ -1,6 +1,3 @@
-npm install @radix-ui/react-tabs
-"use client";
-
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { cn } from "@/lib/utils";
 import * as React from "react";
