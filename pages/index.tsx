@@ -9,16 +9,23 @@ export default function Dashboard() {
   const [outboundNumber, setOutboundNumber] = useState("");
 
   const handleCall = async () => {
+    if (!outboundNumber || !/^\+?[1-9]\d{1,14}$/.test(outboundNumber)) {
+      alert("Please enter a valid phone number in E.164 format (e.g., +14155552671).");
+      return;
+    }
+
     try {
-      const res = await fetch("/api/start-call", {
+      const res = await fetch("/api/call", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ to: outboundNumber }),
       });
+
       if (res.ok) {
         alert("Call initiated successfully");
       } else {
-        alert("Failed to initiate call");
+        const err = await res.json();
+        alert(`Failed to initiate call: ${err.error || 'Unknown error'}`);
       }
     } catch (err) {
       console.error("Error initiating call:", err);
