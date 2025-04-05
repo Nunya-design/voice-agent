@@ -4,10 +4,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
-import { Calendar } from "@/components/ui/calendar";
 
 export default function Dashboard() {
-  const [date, setDate] = useState<Date | undefined>(new Date());
   const [outboundNumber, setOutboundNumber] = useState("");
 
   const handleCall = async () => {
@@ -36,7 +34,6 @@ export default function Dashboard() {
         <TabsList className="mb-4">
           <TabsTrigger value="calls">Recent Calls</TabsTrigger>
           <TabsTrigger value="log">Log New Call</TabsTrigger>
-          <TabsTrigger value="calendar">Schedule</TabsTrigger>
           <TabsTrigger value="outbound">Outbound Call</TabsTrigger>
         </TabsList>
 
@@ -57,16 +54,6 @@ export default function Dashboard() {
               <Input placeholder="Phone Number" />
               <Textarea placeholder="Call Notes" />
               <Button>Save Call</Button>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="calendar">
-          <Card className="mb-4">
-            <CardContent className="space-y-4 p-4">
-              <h2 className="text-xl font-semibold">Schedule a Follow-up</h2>
-              <Calendar mode="single" selected={date} onSelect={setDate} />
-              <Button>Schedule</Button>
             </CardContent>
           </Card>
         </TabsContent>
