@@ -1,18 +1,19 @@
-const VoiceResponse = require('twilio').twiml.VoiceResponse;
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default function handler(req, res) {
-  const twiml = new VoiceResponse();
-  const connect = twiml.connect({
-    action: 'https://your-vercel-app.vercel.app/api/meeting',
-  });
-
-  connect.conversationRelay({
-    url: 'wss://relay-server-xyz.onrender.com',
-    welcomeGreeting: "Hi! You're now speaking with Twilio's AI assistant.",
-    ttsProvider: 'ElevenLabs',
-    voice: '21m00Tcm4TlvDq8ikWAM',
-  });
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  const twiml = `
+    <Response>
+      <Connect>
+        <ConversationRelay
+          url="wss://relay-server-j0er.onrender.com"
+          ttsProvider="ElevenLabs"
+          voice="21m00Tcm4TlvDq8ikWAM"
+          welcomeGreeting="Hi! You're now speaking with Twilio's AI agent." />
+      </Connect>
+    </Response>
+  `;
 
   res.setHeader('Content-Type', 'text/xml');
-  res.status(200).send(twiml.toString());
+  res.status(200).send(twiml.trim());
 }
+
